@@ -1,0 +1,59 @@
+﻿<Window x:Class="MondoText.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MondoText" Height="625" Width="872">
+    <Grid>
+        <TextBox Height="230" Text="{Binding Input}" HorizontalAlignment="Left" Margin="12,34,0,0" Name="txtInput" VerticalAlignment="Top" Width="558" AcceptsTab="True" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+        <Label Content="Input" Height="28" HorizontalAlignment="Left" Margin="12,0,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Output" Height="28" HorizontalAlignment="Left" Margin="12,279,0,0" Name="label2" VerticalAlignment="Top" />
+        <TextBox Height="230" Text="{Binding Output}" HorizontalAlignment="Left" Margin="12,313,0,0" Name="txtOutput" VerticalAlignment="Top" Width="558" TextChanged="txtOutput_TextChanged" AcceptsTab="True" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+        <Button IsDefault="True" Content="Transform" Height="23" HorizontalAlignment="Left" Margin="763,551,0,0" Name="btnTransform" VerticalAlignment="Top" Width="75" Click="btnTransform_Click" />
+        <GroupBox Header="Options" Height="531" HorizontalAlignment="Left" Margin="576,12,0,0" Name="groupBox1" VerticalAlignment="Top" Width="262">
+            <Grid>
+                <GroupBox Header="Output / Delimiter" Height="80" HorizontalAlignment="Left" Margin="6,428,0,0" Name="groupBox2" VerticalAlignment="Top" Width="228">
+                    <Grid>
+                        <RadioButton IsChecked="{Binding IsVertical}" Content="Vertical" Height="16" HorizontalAlignment="Left" Margin="6,5,0,0" Name="radioButton1" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding IsHorizontal}" Content="Horizontal (Space)" Height="16" HorizontalAlignment="Left" Margin="67,5,0,0" Name="radioButton2" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding IsComma}" Content="Comma" Height="16" HorizontalAlignment="Left" Margin="6,27,0,0" Name="radioButton3" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding IsPipe}" Content="Pipe |" Height="16" HorizontalAlignment="Left" Margin="67,27,0,0" Name="radioButton4" VerticalAlignment="Top" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Text Qualifier" Height="74" HorizontalAlignment="Left" Margin="7,354,0,0" Name="groupBox3" VerticalAlignment="Top" Width="227">
+                    <Grid>
+                        <RadioButton IsChecked="{Binding QuoteEntries}" Content="Quote Entries" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="checkBox3" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding TickEntries}" Content="Tick Entries" Height="16" HorizontalAlignment="Left" Margin="104,6,0,0" Name="checkBox4" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding NoTextQualifiers}" Content="None" Height="16" HorizontalAlignment="Left" Margin="6,29,0,0" Name="radioButton5" VerticalAlignment="Top" />
+                    </Grid>
+                </GroupBox>                
+                <GroupBox Header="Text Case" Height="74" HorizontalAlignment="Left" Margin="6,279,0,0" Name="groupBox4" VerticalAlignment="Top" Width="228">
+                    <Grid>
+                        <RadioButton IsChecked="{Binding IsUpper}" Content="All Upper" Height="16" HorizontalAlignment="Left" Margin="7,6,0,0" Name="checkBox5" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding IsLower}" Content="All Lower" Height="16" HorizontalAlignment="Left" Margin="79,6,0,0" Name="checkBox6" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding NoCaseChange}" Content="None" Height="16" HorizontalAlignment="Left" Margin="7,28,0,0" Name="radioButton6" VerticalAlignment="Top" />
+                    </Grid>
+                </GroupBox>                
+                <GroupBox Header="HTML Encoding / Decoding" Height="76" HorizontalAlignment="Left" Margin="7,204,0,0" Name="groupBox5" VerticalAlignment="Top" Width="227">
+                    <Grid>
+                        <RadioButton IsChecked="{Binding HTMLEncode}" Content="HTML Encode" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="checkBox10" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding HTMLDecode}" Content="HTML Decode" Height="16" HorizontalAlignment="Left" Margin="104,6,0,0" Name="radioButton7" VerticalAlignment="Top" />
+                        <RadioButton IsChecked="{Binding NoHTMLEncoding}" Content="None" Height="16" HorizontalAlignment="Left" Margin="6,28,0,0" Name="radioButton8" VerticalAlignment="Top" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Find and Replace" Height="90" HorizontalAlignment="Left" Margin="7,116,0,0" Name="groupBox6" VerticalAlignment="Top" Width="227">
+                    <Grid>
+                        <TextBox Text="{Binding Find}" Height="23" HorizontalAlignment="Left" Margin="63,6,0,0" Name="textBox1" VerticalAlignment="Top" Width="146" />
+                        <TextBox Text="{Binding Replace}" Height="23" HorizontalAlignment="Left" Margin="63,35,0,0" Name="textBox2" VerticalAlignment="Top" Width="146" />
+                        <Label Content="Find" Height="28" HorizontalAlignment="Left" Margin="6,4,0,0" Name="label4" VerticalAlignment="Top" />
+                        <Label Content="Replace" Height="28" HorizontalAlignment="Left" Margin="6,33,0,0" Name="label5" VerticalAlignment="Top" />
+                    </Grid>
+                </GroupBox>
+                <CheckBox IsChecked="{Binding RemoveDuplicates}" Content="Remove Duplicates" ToolTip="Removes duplicates based on a space or new line delimiter" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="checkBox1" VerticalAlignment="Top" Width="126" />
+                <CheckBox IsChecked="{Binding RemoveBlankEntries}" Content="Remove Blank Entries" Height="16" HorizontalAlignment="Left" Margin="6,28,0,0" Name="checkBox2" VerticalAlignment="Top" Width="136" />
+                <CheckBox IsChecked="{Binding ReplaceSingleQuotesWithDouble}" Content="Replace single quotes with double quotes" Height="16" HorizontalAlignment="Left" Margin="6,50,0,0" Name="checkBox7" VerticalAlignment="Top" />
+                <CheckBox IsChecked="{Binding EscapeQuotes}" Content="Escape Quotes" Height="16" HorizontalAlignment="Left" Margin="6,72,0,0" Name="checkBox8" VerticalAlignment="Top" />
+                <CheckBox IsChecked="{Binding EscapeTicks}" Content="Escape Ticks" Height="16" HorizontalAlignment="Left" Margin="6,94,0,0" Name="checkBox9" VerticalAlignment="Top" />                
+            </Grid>
+        </GroupBox>
+        <Label Content="{Binding ElementCount}" Height="28"  HorizontalAlignment="Left" Margin="66,279,0,0" Name="label3" VerticalAlignment="Top" Width="504" HorizontalContentAlignment="Right" Foreground="#FFE24545" />
+    </Grid>
+</Window>
